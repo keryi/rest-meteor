@@ -8,8 +8,9 @@
 <h1>News Feed</h1>
 {{#each posts}}
 <div class='post'>
-	<p>{{content}}</p>
+	<p>{{content}}<a href='#' postId='{{_id}}' class='postDelete close'><span aria-hidden='true'>&times;</span><span class='sr-only'>Delete</span></a></p>
 	<p class='text-muted'><small>{{created_at}}</small></p>
+
 </div>
 {{/each}}
 </div>
