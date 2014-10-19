@@ -1,9 +1,19 @@
 <template name='postIndex'>
 
-<div class='container' id='posts'>
+<div class='row'>
+<div class='col-md-6 col-md-offset-3'>
+<h1>What's on your mind now?</h1>
 {{> postSubmit}}
-</div>
 
+<h1>News Feed</h1>
+{{#each posts}}
+<div class='post'>
+	<p>{{content}}</p>
+	<p class='text-muted'><small>{{created_at}}</small></p>
+</div>
+{{/each}}
+</div>
+</div>
 </template>
 
 <template name='postSubmit'>
@@ -14,7 +24,7 @@
 </div>
 
 <div class='form-group'>
-<input type='submit' class='btn btn-primary' value='Post' />
+<input type='submit' class='btn btn-primary' id='postCreate' value='Post' />
 </div>
 </form>
 
