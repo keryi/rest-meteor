@@ -13,3 +13,7 @@ Posts.allow({
 		return true;
 	}
 });
+
+Posts.before.insert(function (userId, post) {
+	post.created_at = new Date();
+})

@@ -4,7 +4,20 @@ Meteor.startup(function() {
 
 Template.postIndex.helpers({
 	posts: function() {
-		return Posts.find();
+		return Posts.find({}, { sort: { created_at: 'desc' } });
+	},
+
+	timeAgo: function(datetime) {
+		var secondsDiff = Math.floor((new Date() - datetime) / 1000);
+		if (secondsDiff < 60) {
+			return secondsDiff + " seconds ago";
+		} else if (secondsDiff >= 60 && secondsDiff <= 59 * 60) {
+			return Math.floor(secondsDiff / 60) + " minutes ago";
+		} else if (secondsDiff >= 3600 && secondsDiff <= 23 * 3600) {
+			return Math.floor(secondsDiff / 3600) + " hours ago";
+		} else {
+			return datetime.toDateString();
+		}
 	}
 });
 
@@ -16,8 +29,6 @@ Template.postIndex.events({
 			var postId = $(e.currentTarget).attr('postId');
 
 			var url = Session.get('serverUrl') + 'api/v1/post/' + postId;
-
-			alert(url);
 
 			HTTP.del(url, {}, function(error, result){
 				if(error) {
@@ -36,8 +47,7 @@ Template.postSubmit.events({
 		if (content.length > 0) {
 			var dataObject = {
 				data: {
-					content: content,
-					created_at: new Date()
+					content: content
 				}
 			};
 

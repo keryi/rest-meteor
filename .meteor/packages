@@ -5,9 +5,9 @@
 
 meteor-platform
 autopublish
-insecure
 iron:router
 mizzao:bootstrap-3
 mrt:googlemaps
 http
+matb33:collection-hooks
 
