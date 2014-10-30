@@ -1,5 +1,5 @@
 Meteor.startup(function() {
-	Session.set('serverUrl', 'http://192.168.78.178:3000/')
+	Session.set('serverUrl', 'http://localhost:3000/')
 })
 
 Template.postIndex.helpers({

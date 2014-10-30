@@ -7,7 +7,5 @@ meteor-platform
 autopublish
 iron:router
 mizzao:bootstrap-3
-mrt:googlemaps
 http
 matb33:collection-hooks
-
